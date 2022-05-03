@@ -8,6 +8,9 @@ import { ConversionesComponent } from './pages/conversiones/conversiones.compone
 import { CalculaFechaComponent } from './pages/calcula-fecha/calcula-fecha.component';
 import { FormularioComponent } from './pages/formulario/formulario.component';
 import { LoginComponent } from './auth/login/login.component';
+import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
+import { NoPageFoundComponent } from './pages/no-page-found/no-page-found.component';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { LoginComponent } from './auth/login/login.component';
     ConversionesComponent,
     CalculaFechaComponent,
     FormularioComponent,
-    LoginComponent
+    LoginComponent,
+    BienvenidaComponent,
+    NoPageFoundComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
