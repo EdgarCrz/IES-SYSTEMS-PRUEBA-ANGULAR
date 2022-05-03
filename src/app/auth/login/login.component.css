@@ -1,12 +1,12 @@
-.contenedor{
-    height: 100vh;
-    width: 100%;
-}
-.div_bienvenida{
-    height: 30% ;
-    background:blue;
-}
-.div_login{
-    height: 70% ;
-    /* background:red */
-}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color: #004e75!important;
+  }
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #004e75;
+  }
+
+  .mat-raised-button.mat-primary{
+      background-color: #004e75;
+  }

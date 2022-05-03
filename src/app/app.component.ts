@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ies-systems';
+
+  public width: Number = 0;
+  public height: Number = 0;
+
+  constructor(){
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+  }
+
+  @HostListener('window:resize', ['$event'])
+
+  onResize(event:any) {
+
+    this.width = window.innerWidth;
+
+    this.height = window.innerHeight;
+
+  }
 }

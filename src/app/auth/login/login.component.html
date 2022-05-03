@@ -1,18 +1,31 @@
-<div class="flex flex-column  container  contenedor background-gris">
+<div class="bg-zinc-300 w-screen h-screen flex items-center">
     <!-- FIXME: Arreglar diseño -->
-    <div class="div_bienvenida">
-        <h3>Contenedor bienvenida</h3>
+    <div class="container h-85vh w-90% flex rounded-md flex-col justify-center md:flex-row md:items-center md:h-70vh  bg-white">
+        <div class="md:h-3/5 p-3 flex flex-col justify-evenly items-center md:w-1/2">
+            <h1>Bienvenido de nuevo</h1>
+            <div class="md:w-3/4   md:flex md:justify-center">
+                <img class="md:w-95% xl:w-80% rounded-md"
+                    src="../../../assets/img/sean-pollock-PhYq704ffdA-unsplash.jpg" alt="">
+            </div>
+        </div>
+        <form [formGroup]="iesUser"
+            class="flex flex-col justify-start items-center   md:justify-center md:h-full md: md:w-1/2">
+            <div class="flex flex-col w-11/12 h-full justify-center p-3 rounded-md bg-naranja_ies/60 md:w-full md:h-80%">
+                <h3 class="text-center">Ingresa tus claves</h3>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Usuario</mat-label>
+                    <input formControlName="username" matInput placeholder="carlos.oviedo" value="">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input formControlName="password" matInput placeholder="$oyAdmin666" value="">
+                </mat-form-field>
+                <mat-checkbox formControlName="recordar" class="example-margin">Recordar</mat-checkbox>
+                <!-- <mat-divider></mat-divider> -->
+                <br>
+                <button [disabled]="iesUser.invalid" (click)="entrar()" mat-raised-button
+                    color="primary">Entrar</button>
+            </div>
+        </form>
     </div>
-    <form [formGroup]="iesUser" class="div_login d-flex flex-column justify-content-center">
-
-        <mat-form-field   class="example-full-width" appearance="fill">
-            <mat-label>Usuario</mat-label>
-            <input formControlName="username" matInput placeholder="carlos.oviedo" value="">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Contraseña</mat-label>
-            <input formControlName="password" matInput placeholder="$oyAdmin666" value="">
-        </mat-form-field>
-        <button (click)="entrar()" mat-raised-button color="primary">Entrar</button>
-    </form>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import Swal from 'sweetalert2';
@@ -19,51 +21,58 @@ export class LoginComponent implements OnInit {
 
 
   public iesUser = this.fb.group({
-    username: ['carlos.oviedo', [ Validators.required]],
+    // carlos.oviedo
+    username: [localStorage.getItem('loginName') || '', [ Validators.required]],
+    // $oyAdmin666
     password: ['$oyAdmin666', Validators.required],
+    recordar: [false],
   
   })
   
-  constructor(private fb: FormBuilder, private login: LoginService) { }
+  constructor(private router: Router, private fb: FormBuilder, private login: LoginService) { }
   
   ngOnInit(): void {
   }
 
 
-  entrar(){
 
+  
+  entrar(){
+    
     this.login.login(this.iesUser.value).subscribe((resp)=>{
       const nombre = resp.data?.infUsuario.nombre;
       const apellido = resp.data?.infUsuario.apellidoPaterno;
-      
       const {mensaje, exito} = resp;
       // console.log(exito);
-
+      // console.log(resp);
+      
       // TODO: VERIFICAR FUNCIONAMIENDO
-      if (exito === false) {
-       Swal.fire({
-        icon: 'error',
-        title: `${mensaje}`,
+      // TODO: AGREGAR ERROR DE USUARIO NO ENCONTRADO
+      if (exito === true) {
         
-        showConfirmButton: false,
-        timer: 1000
-      })
-        
-      }else{
-
         Swal.fire({
           icon: 'success',
           title: `${mensaje}`,
           text: `Bienvenido ${nombre} ${apellido}`,
           showConfirmButton: false,
-          timer: 1000
+          timer: 1200
         })
+        this.router.navigateByUrl('/'); 
+        if (this.iesUser.get('recordar')?.value) {
+          localStorage.setItem('loginName',this.iesUser.get('username')?.value )
+        }else{
+          localStorage.removeItem('loginName');
+
+        }
+       
       }
+    },(err) => {
+      Swal.fire('Error', err.error.mensaje, 'error');
+      console.log(err);
+      
     })
-    // console.log(this.iesUser.value);
-    
-    // console.log(this.iesUser.get('usuario')!.value);
-    // console.log(this.iesUser.get('contrasena')!.value);
+   
+    this.router.navigateByUrl('/');
     
   }
   

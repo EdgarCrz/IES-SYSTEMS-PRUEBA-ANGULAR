@@ -14,6 +14,7 @@ import { PagesComponent } from './pages/pages.component';
 import { AngularMaterialModule } from './angular-material/angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './shared/header/header.component';
 
 
 
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     BienvenidaComponent,
     NoPageFoundComponent,
-    PagesComponent
+    PagesComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

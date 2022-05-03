@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { LoginForm } from '../interfaces/login-form.interface';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { tap, map, catchError, delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 
@@ -12,19 +13,27 @@ import { tap, map, catchError, delay } from 'rxjs/operators';
 })
 export class LoginService {
 
+
   constructor(private http: HttpClient) { }
 
+  public get token() {
+    return localStorage.getItem('token') || ''; //para evitar estar haciendo esto cada que necesitemos el token del localstorage
+  }
 
   login = (formData: LoginForm) => {
-    // como es un observable tenemos que retornar la peticion
-    // el primer parametro es la url de la peticion y el segundo el body de la peticion
-    return this.http.post<{exito: Boolean, mensaje:string, data?:{infUsuario:{nombre:string, apellidoPaterno:string}}}>(`https://desa.ies-webcontent.com.mx/login`, formData);
-    // .pipe(
-    //   tap((resp: any) => {
-    //     console.log(resp);
-        
-    //     this.guardarLocalStorage(resp.token, resp.menu); // para reducir codigo centralizamos  ambos seteos de localStorage en un metodo que carga ambas cosas, valio la pensa hacerlo así ya que esto se repetia varias veces (4-5)
-    //   })
-    // );
+ 
+    return this.http.post<{ exito: Boolean, mensaje: string, data?: { token: string, infUsuario: { nombre: string, apellidoPaterno: string, loginName: string } } }>(`https://desa.ies-webcontent.com.mx/login`, formData)
+      .pipe(
+        tap((resp: any) => {
+          // console.log(resp);
+
+          localStorage.setItem('token', resp.data.token) // para reducir codigo centralizamos  ambos seteos de localStorage en un metodo que carga ambas cosas, valio la pensa hacerlo así ya que esto se repetia varias veces (4-5)
+
+        })
+      );
   };
+  // FIXME:Con un endpoint "de revision de token" en el cual podamos mandar el token actual podriamos compararlo podriamos hacerlo mas seguro evitando asi que cualquiera ingrese cualquier cosa
+  // validarToken(){
+
+  // }
 }
