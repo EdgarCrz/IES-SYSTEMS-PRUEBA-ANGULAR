@@ -2,3 +2,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.bg-naranja{
+    background: #ff7f00;
+}
+.background-gris{
+    /* background:rgb(228, 228, 228); */
+    /* background:red; */
+}
+
+.bg-azul{
+    background: #004e75;
+}
+
+
+

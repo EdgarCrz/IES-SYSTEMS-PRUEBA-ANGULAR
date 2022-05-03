@@ -1,1 +1,18 @@
-<p>login works!</p>
+<div class="flex flex-column  container  contenedor background-gris">
+    <!-- FIXME: Arreglar diseño -->
+    <div class="div_bienvenida">
+        <h3>Contenedor bienvenida</h3>
+    </div>
+    <form [formGroup]="iesUser" class="div_login d-flex flex-column justify-content-center">
+
+        <mat-form-field   class="example-full-width" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input formControlName="username" matInput placeholder="carlos.oviedo" value="">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input formControlName="password" matInput placeholder="$oyAdmin666" value="">
+        </mat-form-field>
+        <button (click)="entrar()" mat-raised-button color="primary">Entrar</button>
+    </form>
+</div>
