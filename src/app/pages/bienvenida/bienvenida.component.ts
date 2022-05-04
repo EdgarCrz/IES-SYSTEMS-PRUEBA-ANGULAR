@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,11 +7,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./bienvenida.component.css']
 })
 export class BienvenidaComponent implements OnInit {
+  isOpen: boolean = false;
+  isMovil: boolean = false;
+  nombre: string = '';
+  mostrarNombre: boolean = false;
 
-  constructor() { }
+  constructor() {
+    console.log(this.nombre);
+
+  }
+
 
   ngOnInit(): void {
-    
+
+  }
+
+
+
+  openModal() {
+    this.isOpen = true;
+    this.mostrarNombre = false;
+
+  }
+  closeModal() {
+    this.isOpen = false;
+    this.mostrarNombre = true;
   }
 
 }

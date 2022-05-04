@@ -38,6 +38,7 @@ module.exports = {
         'color4' : '#FF2E63', // rojo/rosado
         'color5' : '#212121',
         'naranja_ies' : '#ff7f00',
+        'azul_ies' : '#004e75',
         'colorRedes' : '#14FFEC',
 
           

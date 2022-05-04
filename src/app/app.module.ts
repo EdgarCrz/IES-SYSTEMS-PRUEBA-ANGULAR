@@ -15,6 +15,7 @@ import { AngularMaterialModule } from './angular-material/angular-material/angul
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
+import { CambioLetrasPipe } from './pipes/cambio-letras.pipe';
 
 
 
@@ -28,7 +29,8 @@ import { HeaderComponent } from './shared/header/header.component';
     BienvenidaComponent,
     NoPageFoundComponent,
     PagesComponent,
-    HeaderComponent
+    HeaderComponent,
+    CambioLetrasPipe
   ],
   imports: [
     BrowserModule,

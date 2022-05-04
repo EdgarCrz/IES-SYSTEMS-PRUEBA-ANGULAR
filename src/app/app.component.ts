@@ -21,7 +21,9 @@ export class AppComponent {
   onResize(event:any) {
 
     this.width = window.innerWidth;
-
+    // console.log(this.width);
+    
+ 
     this.height = window.innerHeight;
 
   }
