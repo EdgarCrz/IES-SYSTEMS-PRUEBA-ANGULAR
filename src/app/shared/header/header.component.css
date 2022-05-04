@@ -1,0 +1,13 @@
+
+.burguer-btn {
+    visibility: hidden;
+  }
+
+@media screen and (max-width: 800px) {
+    .burguer-btn {
+      visibility: visible;
+    }
+    .navbar-desktop {
+      display: none;
+    }
+  }

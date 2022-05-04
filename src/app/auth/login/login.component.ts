@@ -10,46 +10,46 @@ import Swal from 'sweetalert2';
 
 
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
+ 
 
 
   public iesUser = this.fb.group({
     // carlos.oviedo
-    username: [localStorage.getItem('loginName') || '', [ Validators.required]],
+    username: [localStorage.getItem('loginName') || '', [Validators.required]],
     // $oyAdmin666
     password: ['$oyAdmin666', Validators.required],
     recordar: [false],
-  
+
   })
-  
+
   constructor(private router: Router, private fb: FormBuilder, private login: LoginService) { }
-  
+
   ngOnInit(): void {
   }
 
 
 
-  
-  entrar(){
-    
-    this.login.login(this.iesUser.value).subscribe((resp)=>{
+
+  entrar() {
+
+    this.login.login(this.iesUser.value).subscribe((resp) => {
       const nombre = resp.data?.infUsuario.nombre;
       const apellido = resp.data?.infUsuario.apellidoPaterno;
-      const {mensaje, exito} = resp;
+      const { mensaje, exito } = resp;
       // console.log(exito);
       // console.log(resp);
-      
+
       // TODO: VERIFICAR FUNCIONAMIENDO
       // TODO: AGREGAR ERROR DE USUARIO NO ENCONTRADO
       if (exito === true) {
-        
+
         Swal.fire({
           icon: 'success',
           title: `${mensaje}`,
@@ -57,23 +57,23 @@ export class LoginComponent implements OnInit {
           showConfirmButton: false,
           timer: 1200
         })
-        this.router.navigateByUrl('/'); 
+        this.router.navigateByUrl('/');
         if (this.iesUser.get('recordar')?.value) {
-          localStorage.setItem('loginName',this.iesUser.get('username')?.value )
-        }else{
+          localStorage.setItem('loginName', this.iesUser.get('username')?.value)
+        } else {
           localStorage.removeItem('loginName');
 
         }
-       
+
       }
-    },(err) => {
+    }, (err) => {
       Swal.fire('Error', err.error.mensaje, 'error');
       console.log(err);
-      
+
     })
-   
+
     this.router.navigateByUrl('/');
-    
+
   }
-  
+
 }

@@ -1,1 +1,70 @@
 
+
+    <mat-sidenav-container   fullscreen>
+        <!-- Menu movil -->
+        <mat-sidenav class="bg-naranja_ies opacity-70"  #sidenav >
+          <mat-toolbar>
+            <button
+              mat-icon-button
+              class="example-icon"
+              aria-label="Example icon-button with menu icon"
+              (click)="sidenav.toggle()"
+            >
+              <mat-icon>menu</mat-icon>
+            </button>
+          </mat-toolbar>
+          <mat-nav-list >
+            <a
+    
+              routerLinkActive="active"
+              *ngFor="let item of menuItems"
+              [routerLink]="[item.ruta]"
+              mat-list-item
+              (click)="sidenav.toggle()"
+              
+              
+              ><span>{{ item.nombre }}</span></a
+            >
+          
+            <!-- se redujeron 4 lineas a 1, obviamente puedo borrarlas, pero comentarlas me ayuda en mi aprendizaje -->
+          </mat-nav-list>
+        </mat-sidenav>
+        <!-- Menu -->
+        <mat-toolbar class="sticky top-0 z-50">
+          <mat-toolbar-row class="flex justify-end md:justify-center">
+            <!-- Menu desktop -->
+            <button
+              mat-icon-button
+              class="invisible"
+              aria-label="Example icon-button with menu icon"
+              (click)="sidenav.toggle()"
+            >
+              <mat-icon>menu</mat-icon>
+            </button>
+            <nav mat-tab-nav-bar class="navbar-desktop">
+              <button mat-button
+                mat-tab-link
+                *ngFor="let item of menuItems"
+                [routerLink]="[item.ruta]"
+                routerLinkActive="linkActive"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >{{ item.nombre }}</button
+              >
+            </nav>
+      
+            <!-- <span class="example-spacer"></span> -->
+            <button
+              mat-icon-button
+              class="example-icon burguer-btn"
+              aria-label="Example icon-button with menu icon"
+              (click)="sidenav.toggle()"
+            >
+              <mat-icon>menu</mat-icon>
+            </button>
+          </mat-toolbar-row>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+        <!-- <app-footer></app-footer> -->
+      </mat-sidenav-container>
+      
+      
