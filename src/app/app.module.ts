@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
 import { CambioLetrasPipe } from './pipes/cambio-letras.pipe';
+import localeEs from '@angular/common/locales/es-MX';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEs); // empleamos la funcion  y le pasamos como parametro "localEs" que esta cargada con la region de español México
 
 
 
@@ -41,7 +45,9 @@ import { CambioLetrasPipe } from './pipes/cambio-letras.pipe';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es-MX'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
