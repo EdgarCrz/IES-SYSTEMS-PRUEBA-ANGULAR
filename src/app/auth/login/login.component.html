@@ -1,6 +1,6 @@
 <div class="bg-zinc-300 w-screen h-screen flex items-center">
     <!-- FIXME: Arreglar diseño -->
-    <div class="container h-85vh w-90% flex rounded-md flex-col justify-center md:flex-row md:items-center md:h-70vh  bg-white">
+    <div class="container h-auto p-3 w-90% flex rounded-md flex-col justify-center md:flex-row md:items-center md:h-70vh  bg-white">
         <div class="md:h-3/5 p-3 flex flex-col justify-evenly items-center md:w-1/2">
             <h1>Bienvenido de nuevo</h1>
             <div class="md:w-3/4   md:flex md:justify-center">
@@ -20,11 +20,11 @@
                     <mat-label>Contraseña</mat-label>
                     <input formControlName="password" matInput placeholder="$oyAdmin666" value="">
                 </mat-form-field>
-                <mat-checkbox formControlName="recordar" class="example-margin">Recordar</mat-checkbox>
+                <mat-checkbox formControlName="recordar" class="example-margin">Recordar usuario</mat-checkbox>
                 <!-- <mat-divider></mat-divider> -->
                 <br>
-                <button [disabled]="iesUser.invalid" (click)="entrar()" mat-raised-button
-                    color="primary">Entrar</button>
+                <button class="bg-azul_ies text-white animate-pulse hover:bg-naranja_ies hover:animate-none" [disabled]="iesUser.invalid" (click)="entrar()" mat-raised-button
+                    >Entrar</button>
             </div>
         </form>
     </div>
