@@ -1,1 +1,94 @@
-<p>formulario works!</p>
+<!-- Loading -->
+<app-loading [isOpen]="isOpenLoading" [texto]="textoLoading">></app-loading>
+
+<div class="bg-zinc-300 w-screen h-screen ">
+    <div class="container flex flex-col items-center justify-center h-full ">
+        <form  [formGroup]="infoUsuario" class="flex flex-col p-3 justify-center rounded-md bg-naranja_ies/60" action="">
+            <!-- <label class="text-end">Total a pagar: {{ montoApagar | currency: "MXN"  }}</label> -->
+            <!-- <br> -->
+
+            <label class="text-center text-xl">Ingresa tus datos para continuar</label>
+            <br>
+            <mat-divider></mat-divider>
+            <div class="flex gap-2 mt-4">
+                <div class="w-1/2">
+                    <mat-error *ngIf="infoUsuario.get('nombre')?.invalid  && formEnviado === true" class=""><small>Limpiar espacios al final de tu nombre</small></mat-error>
+                    <mat-form-field class="example-full-width " appearance="fill">
+                        <mat-label>Nombre</mat-label>
+                        <input formControlName="nombre" matInput placeholder="Ej. Edgar Ulises" value="" />
+                    </mat-form-field>
+                </div>
+                <div class="w-1/2">
+                    <mat-error *ngIf="infoUsuario.get('apellidos')?.invalid && formEnviado === true"><small>Limpiar espacios al final de tu apellido</small></mat-error>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Apellido</mat-label>
+                        <input formControlName="apellidos" matInput placeholder="Ej. Cruz Alfaro" value="" />
+                    </mat-form-field>
+
+
+                </div>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>Estado civil</mat-label>
+                <!-- (selectionChange)="aumentarFecha(fecha,cantidad)" TODO: Para manejarlo mediante eventos -->
+                <!-- [(value)]="estadoSeleccionado" -->
+                <mat-select formControlName="estadoCivil"  >
+                    <mat-option *ngFor="let estado of estadosCiviles" [value]="estado">
+                        {{estado | estadoCivil}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="flex justify-evenly gap-2 mt-4">
+                <div class="w-1/2 flex flex-col">
+                    <mat-error *ngIf="infoUsuario.get('fumas')?.invalid  && formEnviado === true" class=""><small>Seleccione una opción</small></mat-error>
+                    <small>¿Es usted fumador/a?</small>
+                    <mat-radio-group formControlName="fumas" aria-label="Select an option">
+                        <mat-radio-button value="true">Si</mat-radio-button>&nbsp;&nbsp;
+                        <mat-radio-button value="false">No</mat-radio-button>
+                    </mat-radio-group>
+
+                </div>
+                <div class="w-1/2 flex flex-col">
+                    <mat-error *ngIf="infoUsuario.get('actualmentePracticasLectura')?.invalid  && formEnviado === true" class=""><small>Seleccione una opción</small></mat-error>
+                    <small>¿Actualmente practicas la lectura?</small>
+                    <mat-radio-group formControlName="actualmentePracticasLectura" aria-label="Select an option">
+                        <mat-radio-button (click)="mostrarNodoLibros(true)" value="true">Si</mat-radio-button>
+                        &nbsp;&nbsp;
+                        <mat-radio-button (click)="mostrarNodoLibros(false)"   value="false">No</mat-radio-button>
+                    </mat-radio-group>
+
+                </div>
+
+            </div>
+            <br>
+            <div *ngIf="librosLeidos.length > 0 && abrirInputLibros === false"
+                class="h-10% overflow-scroll justify-center">
+                <div class="cursor-pointer flex justify-center flex-wrap w-full h-full overflow-scroll bg-white/40 rounded-md p-2">
+                    <label class="cursor-pointer hover:text-red-600" (click)="removerLibro(libro)" *ngFor="let libro of librosLeidos">{{ libro
+                        }},&nbsp;</label>
+                </div>
+            </div>
+            <br>
+            <div *ngIf="abrirCerrar">
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Libros de los ultimos 3 meses</mat-label>
+                    <input  (keypress.enter)="agregarLibro()" [(ngModel)]="libro" [ngModelOptions]="{standalone: true}" matInput placeholder="Ej. Cien años de Soledad"
+                        value="" />
+                </mat-form-field>
+                &nbsp; &nbsp;
+                <button  (click)="agregarLibro()" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                    <mat-icon>plus_one</mat-icon>
+                </button>
+            </div>
+            
+
+            <mat-error *ngIf="infoUsuario.invalid && formEnviado === true" class=""><small>Verifique el formulario</small></mat-error>
+
+            <!-- [disabled]="infoUsuario.invalid" -->
+            <button (click)="enviarForm()"  type="submit"  target="_blank" mat-raised-button
+                class="bg-azul_ies animate-pulse hover:bg-naranja_ies hover:animate-none text-base">Enviar formulario
+                &nbsp; &nbsp;<i class="bi bi-ticket-detailed-fill text-2xl"></i></button>
+        </form>
+    </div>
+</div>

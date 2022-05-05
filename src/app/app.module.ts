@@ -18,6 +18,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { CambioLetrasPipe } from './pipes/cambio-letras.pipe';
 import localeEs from '@angular/common/locales/es-MX';
 import { registerLocaleData } from '@angular/common';
+import { EstadoCivilPipe } from './pipes/estado-civil.pipe';
+import { LoadingComponent } from './components/loading/loading.component';
 
 registerLocaleData(localeEs); // empleamos la funcion  y le pasamos como parametro "localEs" que esta cargada con la region de español México
 
@@ -34,7 +36,9 @@ registerLocaleData(localeEs); // empleamos la funcion  y le pasamos como paramet
     NoPageFoundComponent,
     PagesComponent,
     HeaderComponent,
-    CambioLetrasPipe
+    CambioLetrasPipe,
+    EstadoCivilPipe,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
