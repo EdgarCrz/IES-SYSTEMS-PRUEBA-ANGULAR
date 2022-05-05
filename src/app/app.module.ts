@@ -14,12 +14,13 @@ import { PagesComponent } from './pages/pages.component';
 import { AngularMaterialModule } from './angular-material/angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './shared/header/header.component';
+// import { HeaderComponent } from './shared/header/header.component';
 import { CambioLetrasPipe } from './pipes/cambio-letras.pipe';
 import localeEs from '@angular/common/locales/es-MX';
 import { registerLocaleData } from '@angular/common';
 import { EstadoCivilPipe } from './pipes/estado-civil.pipe';
 import { LoadingComponent } from './components/loading/loading.component';
+import { PagesModule } from './pages/pages.module';
 
 registerLocaleData(localeEs); // empleamos la funcion  y le pasamos como parametro "localEs" que esta cargada con la region de español México
 
@@ -28,17 +29,9 @@ registerLocaleData(localeEs); // empleamos la funcion  y le pasamos como paramet
 @NgModule({
   declarations: [
     AppComponent,
-    ConversionesComponent,
-    CalculaFechaComponent,
-    FormularioComponent,
     LoginComponent,
-    BienvenidaComponent,
     NoPageFoundComponent,
-    PagesComponent,
-    HeaderComponent,
-    CambioLetrasPipe,
-    EstadoCivilPipe,
-    LoadingComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -47,7 +40,8 @@ registerLocaleData(localeEs); // empleamos la funcion  y le pasamos como paramet
     AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PagesModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es-MX'}

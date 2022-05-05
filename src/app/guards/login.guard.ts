@@ -1,5 +1,7 @@
 import { Injectable} from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { Observable, tap } from 'rxjs';
+import { LoginService } from '../services/login.service';
 
 
 @Injectable({
@@ -7,7 +9,7 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree, Rout
 })
 export class LoginGuard implements CanActivate {
 
-  constructor(){
+  constructor(private loginService: LoginService , private router: Router){
     
     
   }
@@ -18,15 +20,17 @@ export class LoginGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot){
+    state: RouterStateSnapshot):Observable<boolean> |Promise<boolean> | boolean{
 
-      // FIXME: Como no tengo donde verificar que sea un token valido, simplemente lo deje en que si existe un token en local storage podemos entrar, lo cual lo hace peligroso porque cualquier persona que sepa puede introducir cualquier cosa mediante el navegador y entrar
-     if (localStorage.getItem('token')!?.length > 0) {
-       return true;
-     }else{
-       return false;
-     }
-    
+//  si tenemos un token entonces retornara un true si no entonces nos mandara al login
+    return this.loginService.verificarToken().pipe(
+      tap((tieneToken)=>{
+        if (!tieneToken) {
+          this.router.navigate(['/login']);
+          
+        }
+      })
+    )
   }
   
 }

@@ -3,7 +3,7 @@ import { LoginForm } from '../interfaces/login-form.interface';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { tap, map, catchError, delay } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 
 
@@ -32,8 +32,13 @@ export class LoginService {
         })
       );
   };
-  // FIXME:Con un endpoint "de revision de token" en el cual podamos mandar el token actual podriamos compararlo podriamos hacerlo mas seguro evitando asi que cualquiera ingrese cualquier cosa
-  // validarToken(){
 
-  // }
+
+  // FIXME:Con un endpoint "de revision de token" en el cual podamos mandar el token actual podriamos compararlo podriamos hacerlo mas seguro evitando asi que cualquiera pueda entrar solo agregando un token
+  verificarToken(): Observable<boolean>{
+    if (!localStorage.getItem('token')) {
+      return of(false)
+    }
+    return of (true);
+  }
 }

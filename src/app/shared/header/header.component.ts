@@ -34,16 +34,16 @@ export class HeaderComponent implements OnInit {
       nombre: 'Bienvenida',
     },
     {
-      ruta: 'bienvenida/conversiones',
+      ruta: 'conversiones',
       nombre: 'Conversiones',
     },
     {
-      ruta: 'bienvenida/fecha',
+      ruta: 'fecha',
       nombre: 'Calcula fecha',
 
     },
     {
-      ruta: 'bienvenida/formulario',
+      ruta: 'formulario',
       nombre: 'Formulario',
     },
     // TODO: Si sobra tiempo agregar logOut
