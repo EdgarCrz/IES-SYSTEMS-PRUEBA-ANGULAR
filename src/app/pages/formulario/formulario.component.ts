@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { EnvioFormService } from 'src/app/services/envio-form.service';
 import Swal from 'sweetalert2';
@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
-export class FormularioComponent implements OnInit {
+export class FormularioComponent {
 
   public formEnviado = false;
   msgError = false;
@@ -27,10 +27,10 @@ export class FormularioComponent implements OnInit {
     const nombre = control.value
     const nombreCortado = nombre.split(' ');
     // console.log(nombreCortado);
-    
+
     const ultimoCaracter = nombreCortado[nombreCortado.length - 1];
-    
-     
+
+
     // /\s/.test(nombre)
     if (ultimoCaracter === '') {
       // console.log("AGUAS HAY UN ESPACIO EN BLANCO AL FINAL");
@@ -43,27 +43,20 @@ export class FormularioComponent implements OnInit {
 
   public infoUsuario = this.fb.group(
     {
-      nombre: ['', [, Validators.required, this.validacionEspacios]],
-      apellidos: ['', [Validators.required, this.validacionEspacios]],
+      nombre: ['', [, Validators.required, this.validacionEspacios]],  //TODO: Validacion personalizada
+      apellidos: ['', [Validators.required, this.validacionEspacios]],//TODO: Validacion personalizada
       fumas: [, [Validators.required]],
       actualmentePracticasLectura: [, [Validators.required]],
       librosLeidosUltimosTresMeses: [this.librosLeidos,],
       estadoCivil: [''],
 
     },
-    // {
-    //   Validators 
-    // }
+
   );
 
-  constructor(private fb: FormBuilder, private envioForm:EnvioFormService) { }
+  constructor(private fb: FormBuilder, private envioForm: EnvioFormService) { }
 
-  ngOnInit(): void {
-  }
  
-  // borrarLibros(){
-  //   this.librosLeidos = [];
-  // }
   mostrarNodoLibros(valor: boolean) {
     if (valor) {
       console.log("Abierto");
@@ -76,9 +69,9 @@ export class FormularioComponent implements OnInit {
       this.infoUsuario.get('librosLeidosUltimosTresMeses')?.setValue(this.librosLeidos = []);
 
     }
-    // console.log(this.infoUsuario.get('actualmentePracticasLectura')?.value);
 
   }
+
   agregarLibro() {
     // console.log(this.libro);
     this.librosLeidos.push(this.libro);
@@ -88,25 +81,28 @@ export class FormularioComponent implements OnInit {
 
   removerLibro(libro: any) {
     const aBorrar = this.librosLeidos.indexOf(libro)
-    
+
     this.librosLeidos.splice(aBorrar, 1);
 
   }
 
-  enviarForm(){
+  enviarForm() {
     this.formEnviado = true;
     if (!this.infoUsuario.valid) {
+
       this.msgError = true;
-    }else{
+
+    } else {
+
       this.msgError = false;
       this.isOpenLoading = true;
 
       console.log(this.infoUsuario.value);
 
-      this.envioForm.enviarForm(this.infoUsuario.value).subscribe((resp)=>{
+      this.envioForm.enviarForm(this.infoUsuario.value).subscribe((resp) => {
         console.log(resp);
         this.isOpenLoading = false;
-        // this.infoUsuario.reset(); FIXME: verificar porque no resetea el formulario
+
         Swal.fire({
           icon: 'success',
           title: 'Enviado',
@@ -114,18 +110,13 @@ export class FormularioComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
-      
 
       })
-     
-
 
     }
-    
-    
-    
+
   }
 
- 
+
 
 }

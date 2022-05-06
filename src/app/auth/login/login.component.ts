@@ -29,14 +29,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private fb: FormBuilder, private login: LoginService) {
     console.log(this.mostrarContrasena);
-
   }
 
   ngOnInit(): void {
   }
-
-
-
 
   entrar() {
 
@@ -63,9 +59,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('loginName', this.iesUser.get('username')?.value)
         } else {
           localStorage.removeItem('loginName');
-
         }
-
       }
     }, (err) => {
       Swal.fire('Error', err.error.mensaje, 'error');

@@ -24,15 +24,7 @@ export class CalculaFechaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  // probarSwitch() {
-  //   console.log(this.unidad);
-
-
-  // }
   aumentarFecha(fecha: Date, cantidad: number) {
-
-
 
     switch (this.unidad) {
       case "días":
@@ -49,7 +41,7 @@ export class CalculaFechaComponent implements OnInit {
         break;
       case "años":
         console.log("SOMOS AÑOS");
-        const nuevoAño = new Date(fecha.setFullYear(fecha.getFullYear() + cantidad)); // Años listo 
+        const nuevoAño = new Date(fecha.setFullYear(fecha.getFullYear() + cantidad)); //TODO: Años listo 
         this.fecha = nuevoAño;
 
         break;
@@ -63,11 +55,6 @@ export class CalculaFechaComponent implements OnInit {
     // return console.log(new Date(fecha.setMonth(fecha.getMonth()+ unidad))); // TODO: Mes listo
 
     // return console.log(new Date(fecha.setFullYear(fecha.getFullYear() + unidad))); // Años listo 
-
-
-
-
-
 
   }
 

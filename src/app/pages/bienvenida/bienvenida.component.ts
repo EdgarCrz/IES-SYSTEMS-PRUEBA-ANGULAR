@@ -1,5 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+
 
 
 @Component({
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './bienvenida.component.html',
   styleUrls: ['./bienvenida.component.css']
 })
-export class BienvenidaComponent implements OnInit {
+export class BienvenidaComponent {
   isOpen: boolean = false;
   isMovil: boolean = false;
   nombre: string = '';
@@ -15,14 +15,7 @@ export class BienvenidaComponent implements OnInit {
 
   constructor() {
     console.log(this.nombre);
-
   }
-
-
-  ngOnInit(): void {
-
-  }
-
 
 
   openModal() {

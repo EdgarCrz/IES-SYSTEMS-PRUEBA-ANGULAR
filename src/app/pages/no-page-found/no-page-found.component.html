@@ -3,8 +3,11 @@
         <label class="text-8xl font-bold">404</label>
         <Label class="text-base  md:text-4xl">Pagina no encontrada</Label>
         <br>
-        <a routerLink="/login" mat-raised-button
+        <a *ngIf="existeToken === false" routerLink="/login" mat-raised-button
             class="bg-azul_ies text-white animate-pulse hover:bg-naranja_ies hover:animate-none text-base">Ir a login
         </a>
+        <a *ngIf="existeToken === true" routerLink="/" mat-raised-button
+        class="bg-azul_ies text-white animate-pulse hover:bg-naranja_ies hover:animate-none text-base">Ir a inicio
+    </a>
     </div>
 </div>
