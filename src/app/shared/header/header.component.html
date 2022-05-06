@@ -25,13 +25,24 @@
               
               ><span>{{ item.nombre }}</span></a
             >
+            <a
+    
+              routerLinkActive="active"
+              
+              class="text-white"
+              mat-list-item
+              (click)="borrarToken()"
+              
+              
+              ><span>Salir</span></a
+            >
           
             <!-- se redujeron 4 lineas a 1, obviamente puedo borrarlas, pero comentarlas me ayuda en mi aprendizaje -->
           </mat-nav-list>
         </mat-sidenav>
         <!-- Menu -->
         <mat-toolbar class="sticky top-0 z-50">
-          <mat-toolbar-row class="flex justify-end md:justify-center">
+          <mat-toolbar-row class="flex justify-between md:justify-center">
             <!-- Menu desktop -->
             <button
               mat-icon-button
@@ -50,7 +61,18 @@
                 [routerLinkActiveOptions]="{ exact: true }"
                 >{{ item.nombre }}</button
               >
+              <button  mat-button
+                mat-tab-link
+                routerLinkActive="linkActive"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="borrarToken()"
+                class="text-naranja_ies"
+                >Salir</button
+              >
+              
+            
             </nav>
+            <h1 class="block sm:block md:hidden lg:hidden xl:hidden" >Edgar Cruz</h1>
       
             <!-- <span class="example-spacer"></span> -->
             <button

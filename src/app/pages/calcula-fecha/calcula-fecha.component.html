@@ -1,45 +1,57 @@
 <div class="bg-zinc-300 w-screen h-screen ">
-    <div class="container flex flex-col items-center justify-center h-full ">
+    <div class="container flex flex-col items-center justify-center h-full">
 
-        <h2>Calcular fecha</h2>
-        <mat-divider></mat-divider>
-        <h1>{{fecha | date: 'mediumDate' }}</h1>
+        <div
+            class="md:w-90% md:h-80vh flex flex-col md:flex-row items-center p-3 justify-center rounded-md bg-naranja_ies/60">
+            <div class=" overflow-hidden 
+             rounded-md m-3 md:w-1/2 max-h-80% hidden sm:hidden md:block lg:block xl:block ">
+                <img class=" object-contain rounded-md" src="../../../assets/img/calendario.jpg" alt="">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-center text-xl text-white">Calcular fecha</h2>
+                <br>
+                <mat-divider></mat-divider>
+                <br>
+                <h3 class="text-center">{{fecha | date: 'mediumDate' }}</h3>
 
-        <br>
-        <!-- Datepicker -->
-        <div class="flex flex-col justify-center w-80% md:w-1/4 ">
+                <br>
+                <!-- Datepicker -->
+                <div class="flex flex-col justify-center w-full ">
 
-            <mat-form-field appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input [(ngModel)]="fecha" matInput [matDatepicker]="picker">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <!-- Selector -->
-            <mat-form-field appearance="fill">
-                <mat-label>Unidad a aumentar</mat-label>
-                <!-- (selectionChange)="aumentarFecha(fecha,cantidad)" TODO: Para manejarlo mediante eventos -->
-                <mat-select  [(value)]="unidad">
-                    <mat-option *ngFor="let unidad of unidades" [value]="unidad">
-                        {{unidad}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Font size</mat-label>
-                <!-- (keyup)="aumentarFecha(fecha,cantidad)" TODO: Para manejarlo mediante eventos -->
-                <input  [(ngModel)]="cantidad" matInput type="number"
-                    placeholder="0">
-                <span matSuffix>Unidad</span>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Elige una fecha</mat-label>
+                        <input [(ngModel)]="fecha" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <!-- Selector -->
+                    <mat-form-field appearance="fill">
+                        <mat-label>Unidad a aumentar</mat-label>
+                        <!-- (selectionChange)="aumentarFecha(fecha,cantidad)" TODO: Para manejarlo mediante eventos -->
+                        <mat-select [(value)]="unidad">
+                            <mat-option *ngFor="let unidad of unidades" [value]="unidad">
+                                {{unidad}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Cantidad</mat-label>
+                        <!-- (keyup)="aumentarFecha(fecha,cantidad)" TODO: Para manejarlo mediante eventos -->
+                        <input [(ngModel)]="cantidad" matInput type="number" placeholder="0">
+                        <span matSuffix>Cantidad</span>
 
-            </mat-form-field>
-            <!-- TODO: Podemos comentar esto y manejarlo mediante eventos -->
-            <button (click)="aumentarFecha(fecha,cantidad)"  mat-raised-button color="primary">Primary</button>
+                    </mat-form-field>
+                    <!-- TODO: Podemos comentar esto y manejarlo mediante eventos -->
+                    <button (click)="aumentarFecha(fecha,cantidad)"
+                        class="bg-azul_ies text-white animate-pulse hover:bg-naranja_ies hover:animate-none"
+                        mat-raised-button>Primary</button>
 
+                </div>
+            </div>
         </div>
 
-        
+
 
     </div>
 

@@ -50,4 +50,9 @@ export class HeaderComponent implements OnInit {
 
   ];
 
+  borrarToken(){
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('login')
+  }
+
 }

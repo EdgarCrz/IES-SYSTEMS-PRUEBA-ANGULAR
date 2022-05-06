@@ -112,7 +112,7 @@ export class FormularioComponent implements OnInit {
           title: 'Enviado',
           text: 'Información enviada',
           showConfirmButton: false,
-          timer: 1100
+          timer: 1500
         })
       
 
@@ -126,5 +126,6 @@ export class FormularioComponent implements OnInit {
     
   }
 
+ 
 
 }

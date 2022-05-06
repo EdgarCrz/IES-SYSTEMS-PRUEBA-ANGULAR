@@ -14,12 +14,13 @@
                 <h3 class="text-center">Ingresa tus claves</h3>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Usuario</mat-label>
-                    <input formControlName="username" matInput placeholder="carlos.oviedo" value="">
+                    <input formControlName="username" matInput placeholder="" value="">
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Contraseña</mat-label>
-                    <input formControlName="password" matInput placeholder="$oyAdmin666" value="">
+                    <input type="{{password}}" formControlName="password" matInput placeholder="" value="">
                 </mat-form-field>
+                <mat-checkbox  (change)="mostrarPassword(mostrarContrasena)" [(ngModel)]="mostrarContrasena" [ngModelOptions]="{standalone: true}" class="example-margin">Mostrar contraseña</mat-checkbox>
                 <mat-checkbox formControlName="recordar" class="example-margin">Recordar usuario</mat-checkbox>
                 <!-- <mat-divider></mat-divider> -->
                 <br>

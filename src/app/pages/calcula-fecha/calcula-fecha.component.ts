@@ -25,31 +25,11 @@ export class CalculaFechaComponent implements OnInit {
   }
 
 
-  probarSwitch() {
-    console.log(this.unidad);
+  // probarSwitch() {
+  //   console.log(this.unidad);
 
 
-
-
-    // switch (unidades) {
-    //   case ["días"]:
-    //     console.log("SOMOS DÍAS");
-
-    //     break;
-    //     case ["meses"]:
-    //     console.log("SOMOS MESES");
-
-    //     break;
-    //     case ["años"]:
-    //     console.log("SOMOS AÑOS");
-
-    //     break;
-
-    //   default:
-    //     break;
-    // }
-
-  }
+  // }
   aumentarFecha(fecha: Date, cantidad: number) {
 
 

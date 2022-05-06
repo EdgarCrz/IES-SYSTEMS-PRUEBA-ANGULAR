@@ -3,24 +3,24 @@
 
 <div class="bg-zinc-300 w-screen h-screen ">
     <div class="container flex flex-col items-center justify-center h-full ">
-        <form  [formGroup]="infoUsuario" class="flex flex-col p-3 justify-center rounded-md bg-naranja_ies/60" action="">
+        <form  [formGroup]="infoUsuario" class="w-90%  flex flex-col p-3 justify-center rounded-md bg-naranja_ies/60" action="">
             <!-- <label class="text-end">Total a pagar: {{ montoApagar | currency: "MXN"  }}</label> -->
             <!-- <br> -->
 
-            <label class="text-center text-xl">Ingresa tus datos para continuar</label>
+            <h2 class="text-center text-xl text-white">Ingresa tus datos</h2>
             <br>
             <mat-divider></mat-divider>
-            <div class="flex gap-2 mt-4">
-                <div class="w-1/2">
+            <div class="flex flex-col  md:flex-row gap-2 mt-4">
+                <div class="w-100% md:w-1/2">
                     <mat-error *ngIf="infoUsuario.get('nombre')?.invalid  && formEnviado === true" class=""><small>Limpiar espacios al final de tu nombre</small></mat-error>
-                    <mat-form-field class="example-full-width " appearance="fill">
+                    <mat-form-field class="example-full-width w-full" appearance="fill">
                         <mat-label>Nombre</mat-label>
                         <input formControlName="nombre" matInput placeholder="Ej. Edgar Ulises" value="" />
                     </mat-form-field>
                 </div>
-                <div class="w-1/2">
+                <div class="w-100% md:w-1/2">
                     <mat-error *ngIf="infoUsuario.get('apellidos')?.invalid && formEnviado === true"><small>Limpiar espacios al final de tu apellido</small></mat-error>
-                    <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-form-field class="example-full-width w-full" appearance="fill">
                         <mat-label>Apellido</mat-label>
                         <input formControlName="apellidos" matInput placeholder="Ej. Cruz Alfaro" value="" />
                     </mat-form-field>
@@ -38,19 +38,21 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <div class="flex justify-evenly gap-2 mt-4">
-                <div class="w-1/2 flex flex-col">
+            <div class="flex flex-col md:flex-row justify-evenly gap-2 mt-4 rounded-md bg-white/50 p-3">
+                <div class="w-full md:w-1/2 flex md:flex-col items-center">
                     <mat-error *ngIf="infoUsuario.get('fumas')?.invalid  && formEnviado === true" class=""><small>Seleccione una opción</small></mat-error>
                     <small>¿Es usted fumador/a?</small>
+                    &nbsp;&nbsp;
                     <mat-radio-group formControlName="fumas" aria-label="Select an option">
                         <mat-radio-button value="true">Si</mat-radio-button>&nbsp;&nbsp;
                         <mat-radio-button value="false">No</mat-radio-button>
                     </mat-radio-group>
 
                 </div>
-                <div class="w-1/2 flex flex-col">
+                <div class="w-full md:w-1/2 flex md:flex-col items-center">
                     <mat-error *ngIf="infoUsuario.get('actualmentePracticasLectura')?.invalid  && formEnviado === true" class=""><small>Seleccione una opción</small></mat-error>
-                    <small>¿Actualmente practicas la lectura?</small>
+                    <small>¿Practicas la lectura?</small>
+                    &nbsp;&nbsp;&nbsp;
                     <mat-radio-group formControlName="actualmentePracticasLectura" aria-label="Select an option">
                         <mat-radio-button (click)="mostrarNodoLibros(true)" value="true">Si</mat-radio-button>
                         &nbsp;&nbsp;
@@ -69,15 +71,15 @@
                 </div>
             </div>
             <br>
-            <div *ngIf="abrirCerrar">
+            <div class="flex items-center" *ngIf="abrirCerrar">
 
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Libros de los ultimos 3 meses</mat-label>
+                <mat-form-field class="w-9/12" appearance="fill">
+                    <mat-label>Nombre del libro</mat-label>
                     <input  (keypress.enter)="agregarLibro()" [(ngModel)]="libro" [ngModelOptions]="{standalone: true}" matInput placeholder="Ej. Cien años de Soledad"
                         value="" />
                 </mat-form-field>
                 &nbsp; &nbsp;
-                <button  (click)="agregarLibro()" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                <button    (click)="agregarLibro()" class="w-3/12" mat-mini-fab color="accent">
                     <mat-icon>plus_one</mat-icon>
                 </button>
             </div>
@@ -86,8 +88,8 @@
             <mat-error *ngIf="infoUsuario.invalid && formEnviado === true" class=""><small>Verifique el formulario</small></mat-error>
 
             <!-- [disabled]="infoUsuario.invalid" -->
-            <button (click)="enviarForm()"  type="submit"  target="_blank" mat-raised-button
-                class="bg-azul_ies animate-pulse hover:bg-naranja_ies hover:animate-none text-base">Enviar formulario
+            <button  (click)="enviarForm()"  type="submit"  target="_blank" mat-raised-button
+                class="bg-azul_ies text-white animate-pulse hover:bg-naranja_ies hover:animate-none text-base">Enviar
                 &nbsp; &nbsp;<i class="bi bi-ticket-detailed-fill text-2xl"></i></button>
         </form>
     </div>

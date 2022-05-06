@@ -7,9 +7,6 @@ import Swal from 'sweetalert2';
 
 
 
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,19 +14,23 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
- 
+  mostrarContrasena: boolean = false;
+  password: string = 'password'
 
 
   public iesUser = this.fb.group({
     // carlos.oviedo
     username: [localStorage.getItem('loginName') || '', [Validators.required]],
     // $oyAdmin666
-    password: ['$oyAdmin666', Validators.required],
+    password: ['', Validators.required],
     recordar: [false],
 
   })
 
-  constructor(private router: Router, private fb: FormBuilder, private login: LoginService) { }
+  constructor(private router: Router, private fb: FormBuilder, private login: LoginService) {
+    console.log(this.mostrarContrasena);
+
+  }
 
   ngOnInit(): void {
   }
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit {
           title: `${mensaje}`,
           text: `Bienvenido ${nombre} ${apellido}`,
           showConfirmButton: false,
-          timer: 1200
+          timer: 1500
         })
         this.router.navigateByUrl('/');
         if (this.iesUser.get('recordar')?.value) {
@@ -73,6 +74,12 @@ export class LoginComponent implements OnInit {
     })
 
     this.router.navigateByUrl('/');
+
+  }
+
+  mostrarPassword(value: boolean) {
+
+    value === true ? this.password = '' : this.password = 'password';
 
   }
 
