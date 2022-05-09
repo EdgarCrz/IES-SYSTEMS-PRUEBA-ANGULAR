@@ -100,17 +100,36 @@ export class FormularioComponent {
       console.log(this.infoUsuario.value);
 
       this.envioForm.enviarForm(this.infoUsuario.value).subscribe((resp) => {
-        console.log(resp);
+
+        if(resp){
+
+          console.log(resp);
+          this.isOpenLoading = false;
+  
+          Swal.fire({
+            icon: 'success',
+            title: 'Enviado',
+            text: 'Información enviada',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        this.isOpenLoading = false;
+
+      },(error)=>{
         this.isOpenLoading = false;
 
         Swal.fire({
-          icon: 'success',
-          title: 'Enviado',
-          text: 'Información enviada',
+          icon: 'error',
+          title: 'No hay respuesta',
           showConfirmButton: false,
           timer: 1500
         })
-
+        console.log("El servidor no responde");
+        console.log(error);
+        
+        
+        
       })
 
     }
