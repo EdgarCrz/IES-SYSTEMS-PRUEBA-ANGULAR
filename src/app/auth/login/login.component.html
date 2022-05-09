@@ -21,7 +21,7 @@
                 </mat-form-field>
                 <mat-checkbox  (change)="mostrarPassword(mostrarContrasena)" [(ngModel)]="mostrarContrasena" [ngModelOptions]="{standalone: true}" class="example-margin">Mostrar contraseña</mat-checkbox>
                 <mat-checkbox formControlName="recordar" class="example-margin">Recordar usuario</mat-checkbox>
-                <!-- <mat-divider></mat-divider> -->
+                
                 <br>
                 <button class="bg-azul_ies text-white animate-pulse hover:bg-naranja_ies hover:animate-none" [disabled]="iesUser.invalid" (click)="entrar()" mat-raised-button
                     >Entrar</button>
@@ -29,3 +29,22 @@
         </form>
     </div>
 </div>
+
+
+
+<!-- <div class="w-screen h-screen ">
+    <div class="w-full h-full container p-6 grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 grid-flow-col gap-3 ">
+
+        <div class="bg-blue-500 p-3 rounded-md">
+            <div class="md:h-1/2">
+                <h2>Bienvenido</h2>
+            </div>
+            <div class="md:h-1/2">
+                <img src="../../../assets/img/sean-pollock-PhYq704ffdA-unsplash.jpg" alt="">
+            </div>
+        </div>
+        <div class="bg-lime-300 rounded-md">
+            <h1>Hola</h1>
+        </div>
+    </div>
+</div> -->

@@ -13,7 +13,7 @@ export class FormularioComponent {
   public formEnviado = false;
   msgError = false;
   isOpenLoading = false;
-  textoLoading: string = "Verificando boletos";
+  textoLoading: string = "Esperando respuesta";
   abrirCerrar: boolean = false;
   abrirInputLibros: boolean = false;
   librosLeidos: string[] = [];
